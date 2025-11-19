@@ -12,12 +12,12 @@
         }
 
         :root {
-            --font-size-body: 18px;
-            --font-size-small: 15px;
-            --font-size-h1: 48px;
-            --font-size-h2: 36px;
-            --font-size-h3: 26px;
-            --font-size-h4: 20px;
+            --font-size-body: 20px;
+            --font-size-small: 16px;
+            --font-size-h1: 52px;
+            --font-size-h2: 40px;
+            --font-size-h3: 28px;
+            --font-size-h4: 22px;
         }
 
         body {
@@ -208,6 +208,17 @@
             margin: 0 auto;
         }
 
+        #home {
+            max-width: none;
+            padding: 0;
+        }
+
+        #home img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
         .section-title {
             text-align: center;
             font-size: var(--font-size-h2);
@@ -248,7 +259,8 @@
         }
 
         .about-image {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            position: relative;
+            background: #1a202c;
             border-radius: 20px;
             height: 400px;
             display: flex;
@@ -257,6 +269,32 @@
             color: white;
             font-size: 20px;
             box-shadow: 0 20px 60px rgba(102, 126, 234, 0.3);
+            overflow: hidden;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .about-image::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(180deg, rgba(15, 23, 42, 0.1) 0%, rgba(15, 23, 42, 0.45) 100%);
+        }
+
+        .about-image .image-caption {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+            padding: 0 20px;
+            font-weight: 600;
+            letter-spacing: 1px;
+        }
+
+        .about-image .fallback-text {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+            padding: 0 20px;
         }
 
         .team-grid {
@@ -385,6 +423,22 @@
             margin-top: 50px;
         }
 
+        .home-info {
+            margin: 40px auto 0;
+            max-width: 1100px;
+            padding: 0 20px;
+        }
+
+        .home-info .info-card {
+            background: white;
+            color: #2d3748;
+            text-align: left;
+        }
+
+        .home-info .info-card p {
+            color: #4a5568;
+        }
+
         .info-card {
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: white;
@@ -439,6 +493,41 @@
             width: 100%;
             height: auto;
             display: block;
+        }
+
+        .form-heading {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #2d3748;
+            font-size: var(--font-size-h3);
+        }
+
+        .text-secondary {
+            color: #4a5568;
+        }
+
+        .text-muted {
+            color: #718096;
+        }
+
+        .text-small {
+            font-size: var(--font-size-small);
+            line-height: 1.7;
+        }
+
+        .footer-note {
+            text-align: center;
+            margin-bottom: 18px;
+            font-size: var(--font-size-body);
+            color: #cbd5e0;
+        }
+
+        .faq-placeholder {
+            margin-top: 80px;
+            background: #f7fafc;
+            padding: 50px;
+            border-radius: 20px;
+            text-align: center;
         }
 
         .info-card:hover {
@@ -750,7 +839,27 @@
 
     <!-- 首頁 -->
     <section id="home">
-                <img src="Title.png" alt="鳳凰高中教師研習營" style="max-width:100%;height:auto;display:block;margin:0 auto;">
+                <img src="Title.png" alt="鳳凰科技研習營" style="max-width:100%;height:auto;display:block;margin:0 auto;">
+                <div class="info-grid home-info">
+                    <div class="info-card">
+                        <div class="info-icon">🗓️</div>
+                        <h3>活動時間</h3>
+                        <p>115 年 1 月 28 日（週三）- 1 月 29 日（週四）</p>
+                        <p class="text-small">Day 1 上午 10:20 報到；Day 2 下午 13:30 賦歸</p>
+                    </div>
+                    <div class="info-card">
+                        <div class="info-icon">📍</div>
+                        <h3>活動地點</h3>
+                        <p>國立成功大學電機系館、啟端館 openlab</p>
+                        <p class="text-small">台南市東區大學路 1 號，可自駕或搭乘計程車前往</p>
+                    </div>
+                    <div class="info-card">
+                        <div class="info-icon">💰</div>
+                        <h3>研習費用</h3>
+                        <p>全程免費，採邀請制</p>
+                        <p class="text-small">含課程教材、午餐、晚宴與住宿，名額有限敬請把握</p>
+                    </div>
+                </div>
     </section>
 
     <!-- 關於營隊頁面 -->
@@ -764,8 +873,9 @@
                     
                     <p><strong>三大亮點：體驗成大 × 精煉課程 × 建立夥伴關係</strong></p>
                 </div>
-                <div class="about-image">
-                    <p>Day1：系所簡報、科技講座與實作課程亮點</p>
+                <div class="about-image about-slider" data-directory="pic/A" data-interval="5000">
+                    <div class="image-caption">Day1：系所簡報、科技講座與實作課程亮點</div>
+                    <div class="fallback-text">請在 pic/A 目錄放入圖片，即可顯示輪播內容</div>
                 </div>
             </div>
 
@@ -779,11 +889,12 @@
                         <li>與成大師長與各校教師面對面交流，建立長期合作與參訪管道。</li>
                     </ul>
                 </div>
-                <div class="about-image">
-                    <p>Day2：招生講座、實驗室導覽與教師座談</p>
+                <div class="about-image about-slider" data-directory="pic/B" data-interval="5000">
+                    <div class="image-caption">Day2：招生講座、實驗室導覽與教師座談</div>
+                    <div class="fallback-text">請在 pic/B 目錄放入圖片，即可顯示輪播內容</div>
                 </div>
             </div>
-
+            <!--
             <h2 class="section-title" style="margin-top: 80px;">講師與陪伴團隊</h2>
             <div class="team-grid">
                 <div class="team-card">
@@ -811,12 +922,13 @@
                     <p style="margin-top: 15px; color: #4a5568;">全程協助報到、交通與住宿，確保每位教師都能安心交流。</p>
                 </div>
             </div>
+        -->
     </section>
 
     <!-- 課程介紹頁面 -->
     <section id="courses">
             <h2 class="section-title">高中教師研習課程</h2>
-            <p style="max-width: 860px; margin: 20px auto 50px; text-align: center; color: #4a5568;">
+            <p style="max-width: 1000px; margin: 20px auto 50px; text-align: left; color: #4a5568; padding: 0 10px;">
                 Phoenix Tech Camp 兩天一夜的課程把校務簡報、實作課程與生活體驗整合，協助高中教師快速掌握成大電資領域的脈動，
                 並帶回可落地的教學靈感與跨校合作資源。以下四大核心價值，可直接轉化為招生說明、課程規畫或社群分享重點。
             </p>
@@ -998,17 +1110,13 @@
     </section>
 
     <!-- 頁尾 -->
+    <script id="folderImagesData" type="application/json">{"pic/A":["1079105.jpg","20250203_105812.JPG","3L3A5144.JPG","3L3A5145.JPG","3L3A5146.JPG","3L3A5151.JPG","3L3A5152.JPG","3L3A5154.JPG","3L3A5156.JPG","3L3A5161.JPG","3L3A5163.JPG","3L3A5165.JPG","3L3A5167.JPG","3L3A5170.JPG","3L3A5171.JPG","3L3A5173.JPG","3L3A5174.JPG","3L3A5175.JPG","3L3A5176.JPG","3L3A5177.JPG","3L3A5178.JPG","3L3A5182.JPG"],"pic/B":["20250203_111005.JPG","20250203_113102.JPG","20250203_113603.JPG","20250203_115127.JPG","20250203_115219.JPG","20250203_121637.JPG","20250203_121647.JPG","IMG_1807.HEIC","IMG_1813.HEIC","IMG_1816.JPG","IMG_1827.HEIC","IMG_1828.JPG","IMG_1829.HEIC","IMG_1830.HEIC","IMG_1831.HEIC","IMG_1832.HEIC","IMG_1833.HEIC","IMG_1834.HEIC","IMG_5875.HEIC","IMG_5877.HEIC","IMG_5879.HEIC","IMG_5880.HEIC","IMG_5881.HEIC","IMG_5885.HEIC","IMG_5886.HEIC","IMG_5887.HEIC","IMG_5888.HEIC","IMG_5889.HEIC","IMG_5894.HEIC","IMG_5896.HEIC","IMG_5899.HEIC","IMG_5900.HEIC","IMG_5902.HEIC","IMG_5908.HEIC"]}</script>
+
     <footer>
         <div class="footer-content">
             <div class="footer-section">
                 <h3>🔥 鳳凰科技研習營</h3>
                 <p style="color: #cbd5e0; margin-top: 15px;">點燃科技夢想，展翅高飛</p>
-                <div class="social-links">
-                    <a href="#">📘</a>
-                    <a href="#">📷</a>
-                    <a href="#">💚</a>
-                    <a href="#">📹</a>
-                </div>
             </div>
             <div class="footer-section">
                 <h3>快速連結</h3>
@@ -1019,15 +1127,7 @@
                     <li><a href="#registration">立即報名</a></li>
                 </ul>
             </div>
-            <div class="footer-section">
-                <h3>支援服務</h3>
-                <ul>
-                    <li><a href="#">常見問題</a></li>
-                    <li><a href="#">報名須知</a></li>
-                    <li><a href="#">退費政策</a></li>
-                    <li><a href="#">聯絡我們</a></li>
-                </ul>
-            </div>
+
             <div class="footer-section">
                 <h3>聯絡資訊</h3>
                 <ul>
@@ -1109,6 +1209,71 @@
             });
         });
 
+        const folderImagesDataEl = document.getElementById('folderImagesData');
+        let folderImagesCache = {};
+        if (folderImagesDataEl) {
+            try {
+                folderImagesCache = JSON.parse(folderImagesDataEl.textContent || '{}');
+            } catch (error) {
+                folderImagesCache = {};
+            }
+        }
+
+        function initializeFolderSlides() {
+            const sliders = document.querySelectorAll('.about-slider[data-directory]');
+            sliders.forEach(slider => setupFolderSlider(slider));
+        }
+
+        function setupFolderSlider(slider) {
+            const dir = slider.dataset.directory;
+            if (!dir) return;
+            const interval = parseInt(slider.dataset.interval, 10) || 5000;
+            const normalizedDir = dir.replace(/\/$/, '');
+            const localList = folderImagesCache[normalizedDir];
+            if (Array.isArray(localList) && localList.length) {
+                const images = localList.map(file => `${normalizedDir}/${file}`);
+                startFolderSlider(slider, images, interval);
+                return;
+            }
+            fetch(`${normalizedDir}/images.json?cache=${Date.now()}`)
+                .then(res => res.ok ? res.json() : [])
+                .then(files => files.filter(file => /\.(png|jpe?g|gif|webp|heic)$/i.test(file)).map(file => `${normalizedDir}/${file}`))
+                .then(images => {
+                    if (!images.length) {
+                        slider.classList.add('slider-empty');
+                        return;
+                    }
+                    startFolderSlider(slider, images, interval);
+                })
+                .catch(() => {
+                    slider.classList.add('slider-empty');
+                });
+        }
+
+        function startFolderSlider(slider, images, interval) {
+            const fallback = slider.querySelector('.fallback-text');
+            if (fallback) fallback.style.display = 'none';
+            let current = 0;
+
+            const setBackground = index => {
+                const img = new Image();
+                img.onload = () => {
+                    slider.style.backgroundImage = `url('${images[index]}')`;
+                };
+                img.src = images[index];
+            };
+
+            setBackground(current);
+            if (images.length > 1) {
+                setInterval(() => {
+                    current = (current + 1) % images.length;
+                    setBackground(current);
+                }, interval);
+            }
+        }
+
+        initializeFolderSlides();
+
         // 更新導航列 active 狀態（根據滾動位置選擇最接近頂端的 section）
         const sectionsForNav = Array.from(document.querySelectorAll('section[id]'));
         const navLinks = Array.from(document.querySelectorAll('.nav-link'));
@@ -1176,38 +1341,3 @@
     </script>
 </body>
 </html>
-                    
-        .form-heading {
-            text-align: center;
-            margin-bottom: 20px;
-            color: #2d3748;
-            font-size: var(--font-size-h3);
-        }
-
-        .text-secondary {
-            color: #4a5568;
-        }
-
-        .text-muted {
-            color: #718096;
-        }
-
-        .text-small {
-            font-size: var(--font-size-small);
-            line-height: 1.7;
-        }
-
-        .footer-note {
-            text-align: center;
-            margin-bottom: 18px;
-            font-size: var(--font-size-body);
-            color: #cbd5e0;
-        }
-
-        .faq-placeholder {
-            margin-top: 80px;
-            background: #f7fafc;
-            padding: 50px;
-            border-radius: 20px;
-            text-align: center;
-        }
