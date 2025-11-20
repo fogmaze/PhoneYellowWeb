@@ -650,11 +650,90 @@
             line-height: 1.7;
         }
 
+        .logo-link {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .hero-title-img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin: 0 auto;
+        }
+
+        .home-visual-main {
+            background-image: url('mainPage.JPG');
+        }
+
+        .about-row-reverse {
+            flex-direction: row-reverse;
+        }
+
+        .section-title-spaced {
+            margin-top: 80px;
+        }
+
+        .text-accent-strong {
+            color: #667eea;
+            font-weight: bold;
+        }
+
+        .text-body-muted {
+            margin-top: 15px;
+            color: #4a5568;
+        }
+
+        .map-frame {
+            border: 0;
+            width: 100%;
+            height: 350px;
+        }
+
+        .section-intro {
+            max-width: 1000px;
+            margin: 20px auto 50px;
+            text-align: left;
+            color: #4a5568;
+            padding: 0 10px;
+        }
+
+        .reg-note {
+            text-align: center;
+            color: #4a5568;
+            margin-bottom: 20px;
+        }
+
+        .text-center {
+            text-align: center;
+        }
+
+        .footer-lead {
+            color: #cbd5e0;
+            margin-top: 15px;
+        }
+
+        .footer-contact-item {
+            color: #cbd5e0;
+        }
+
         .footer-note {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 8px 12px;
             text-align: center;
             margin-bottom: 18px;
             font-size: var(--font-size-body);
             color: #cbd5e0;
+        }
+
+        .footer-note-item {
+            white-space: nowrap;
+        }
+
+        .footer-note-sep {
+            color: #a0aec0;
         }
 
         .faq-placeholder {
@@ -810,15 +889,25 @@
 
         .contact-item {
             display: flex;
-            flex-direction: column;
+            flex-direction: row;
             align-items: center;
-            gap: 15px;
+            justify-content: flex-start;
+            gap: 10px;
             padding: 25px;
             background: #f7fafc;
             border-radius: 15px;
             transition: all 0.3s;
-            text-align: center;
+            text-align: left;
             width: 100%;
+        }
+
+        .contact-item > div:not(.contact-icon) {
+            flex: 0 1 auto;
+        }
+
+        .contact-icon {
+            order: 0;
+            margin-right: 6px;
         }
 
         .contact-item h4 {
@@ -981,16 +1070,17 @@
     <!-- 頂部跳轉條 -->
     <!--
     <div class="top-bar">
-        <span>📞 聯絡電話：06-2757575 ext.62301（承辦人：蕭小姐）</span>
-        <span>✉️ Email：z11108176@ncku.edu.tw</span>
-        <a href="#registration">🔥 立即報名</a>
+        <span>?? 聯絡電話：06-2757575 ext.62301</span>
+        <span>?? 承辦人：蕭小姐</span>
+        <span>?? Email：z11108176@ncku.edu.tw</span>
+        <a href="#registration">?? 立即報名</a>
     </div>
     -->
 
     <!-- 導航欄 -->
     <nav>
         <div class="nav-container">
-            <div class="logo"><a href="#home" style="text-decoration:none;color:inherit;">🔥 鳳凰教師研習營</a></div>
+            <div class="logo"><a href="#home" class="logo-link">🔥 鳳凰教師研習營</a></div>
             <button class="nav-toggle" aria-label="切換選單" aria-expanded="false">
                 <span></span>
                 <span></span>
@@ -999,8 +1089,8 @@
             <ul class="nav-links">
                 <li><a href="#home" class="nav-link active">首頁</a></li>
                 <li><a href="#about" class="nav-link">關於研習營</a></li>
-                <li><a href="#courses" class="nav-link">課程介紹</a></li>
                 <li><a href="#schedule" class="nav-link">活動資訊</a></li>
+                <li><a href="#courses" class="nav-link">課程介紹</a></li>
                 <li><a href="#registration" class="nav-link">報名專區</a></li>
                 <li><a href="#contact" class="nav-link">聯絡我們</a></li>
             </ul>
@@ -1009,7 +1099,7 @@
 
     <!-- 首頁 -->
     <section id="home">
-                <img src="Title.png" alt="鳳凰科技研習營" style="max-width:100%;height:auto;display:block;margin:0 auto;">
+                <img src="Title.png" alt="鳳凰科技研習營" class="hero-title-img">
                 <div class="info-grid home-info">
                     <div class="info-card compact-info-card">
                         <div class="compact-info-details">
@@ -1029,7 +1119,7 @@
                                 <p class="text-small">含課程教材、午餐、晚宴與住宿，名額有限敬請把握</p>
                             </div>
                         </div>
-                        <div class="home-info-visual" style="background-image: url('mainPage.JPG');" ></div>
+                        <div class="home-info-visual home-visual-main"></div>
                     </div>
                 </div>
     </section>
@@ -1047,11 +1137,11 @@
                 </div>
                 <div class="about-image about-slider" data-directory="pic/A" data-interval="3000">
                     <div class="image-caption">Day1：系所簡報、科技講座與實作課程亮點</div>
-                    <div class="fallback-text">請在 pic/A 目錄放入圖片，即可顯示輪播內容</div>
+                    <div class="fallback-text">Day1：系所簡報、科技講座與實作課程亮點</div>
                 </div>
             </div>
 
-            <div class="about-content" style="flex-direction: row-reverse;">
+            <div class="about-content about-row-reverse">
                 <div class="about-text">
                     <h3>參與研習營你將獲得</h3>
                     <ul>
@@ -1063,36 +1153,36 @@
                 </div>
                 <div class="about-image about-slider" data-directory="pic/B" data-interval="3000">
                     <div class="image-caption">Day2：招生講座、實驗室導覽與教師座談</div>
-                    <div class="fallback-text">請在 pic/B 目錄放入圖片，即可顯示輪播內容</div>
+                    <div class="fallback-text">Day2：招生講座、實驗室導覽與教師座談</div>
 
                 </div>
             </div>
             <!--
-            <h2 class="section-title" style="margin-top: 80px;">講師與陪伴團隊</h2>
+            <h2 class="section-title section-title-spaced">講師與陪伴團隊</h2>
             <div class="team-grid">
                 <div class="team-card">
                     <div class="team-avatar">院</div>
                     <h3>電資學院領導群</h3>
-                    <p style="color: #667eea; font-weight: bold;">趨勢解析與資源分享</p>
-                    <p style="margin-top: 15px; color: #4a5568;">由院長與系主任親自介紹成大電機、資訊發展脈動與教師資源。</p>
+                    <p class="text-accent-strong">趨勢解析與資源分享</p>
+                    <p class="text-body-muted">由院長與系主任親自介紹成大電機、資訊發展脈動與教師資源。</p>
                 </div>
                 <div class="team-card">
                     <div class="team-avatar">創</div>
                     <h3>創客實作講師</h3>
-                    <p style="color: #667eea; font-weight: bold;">手作藍芽音響主講</p>
-                    <p style="margin-top: 15px; color: #4a5568;">啟端館 openlab 導師帶領雷射切割與數位電路，示範教案拆解。</p>
+                    <p class="text-accent-strong">手作藍芽音響主講</p>
+                    <p class="text-body-muted">啟端館 openlab 導師帶領雷射切割與數位電路，示範教案拆解。</p>
                 </div>
                 <div class="team-card">
                     <div class="team-avatar">招</div>
                     <h3>招生與教務夥伴</h3>
-                    <p style="color: #667eea; font-weight: bold;">升學策略與導覽</p>
-                    <p style="margin-top: 15px; color: #4a5568;">提供招生資訊、實驗室導覽與教師座談，協助需求媒合。</p>
+                    <p class="text-accent-strong">升學策略與導覽</p>
+                    <p class="text-body-muted">提供招生資訊、實驗室導覽與教師座談，協助需求媒合。</p>
                 </div>
                 <div class="team-card">
                     <div class="team-avatar">導</div>
                     <h3>研習營陪伴導師</h3>
-                    <p style="color: #667eea; font-weight: bold;">生活引導與資源對接</p>
-                    <p style="margin-top: 15px; color: #4a5568;">全程協助報到、交通與住宿，確保每位教師都能安心交流。</p>
+                    <p class="text-accent-strong">生活引導與資源對接</p>
+                    <p class="text-body-muted">全程協助報到、交通與住宿，確保每位教師都能安心交流。</p>
                 </div>
             </div>
         -->
@@ -1112,7 +1202,7 @@
                         <iframe
                             title="國立成功大學電機系館地圖"
                             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1544.1954413171923!2d120.22150492224054!3d22.996718360389718!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x346e7694a879f56b%3A0x5cd808e8814beed1!2z5ZyL56uL5oiQ5Yqf5aSn5a246Zu75qmf5bel56iL5a2457O7!5e0!3m2!1szh-TW!2stw!4v1763618877133!5m2!1szh-TW!2stw"
-                            style="border:0;width:100%;height:350px;"
+                            class="map-frame"
                             loading="lazy"
                             allowfullscreen=""
                             referrerpolicy="no-referrer-when-downgrade">
@@ -1126,7 +1216,7 @@
     <!-- 課程特色亮點 -->
     <section id="courses">
             <h2 class="section-title">高中教師研習營課程</h2>
-            <p style="max-width: 1000px; margin: 20px auto 50px; text-align: left; color: #4a5568; padding: 0 10px;">
+            <p class="section-intro">
                 鳳凰科技教師研習營兩天一夜的課程把校務簡報、實作課程與生活體驗整合，協助高中教師快速掌握成大電資領域的脈動，
                 並帶回可落地的教學靈感與跨校合作資源。以下四大核心價值，可直接轉化為招生說明、課程規畫或社群分享重點。
             </p>
@@ -1211,8 +1301,8 @@
             
             <div class="registration-form">
                 <h3 class="form-heading">教師線上報名表（Google 表單）</h3>
-                <p style="text-align: center; color: #4a5568; margin-bottom: 20px;">請使用 Google 帳號登入後填寫表單，以確保資料傳送與錄取通知順利。</p>
-                <p style="text-align:center;">
+                <p class="reg-note">請使用 Google 帳號登入後填寫表單，以確保資料傳送與錄取通知順利。</p>
+                <p class="text-center">
                     <a href="https://docs.google.com/forms/d/e/1FAIpQLScOPOP3DmC-EX7xYMtH_1wx1zb8ji2UYvHgjLaqbGkGLvcakw/viewform" target="_blank" class="cta-button">開啟 Google 報名表單</a>
                 </p>
             </div>
@@ -1229,11 +1319,21 @@
             
             <div class="contact-container">
                 <div class="contact-info">
+
+                    <div class="contact-item">
+                        <div class="contact-icon">👤</div>
+                        <div>
+                            <h4>承辦人</h4>
+                            <p class="text-secondary"><strong>蕭小姐</strong></p>
+                        </div>
+                    </div>
+
+
                     <div class="contact-item">
                         <div class="contact-icon">📞</div>
                         <div>
                             <h4>聯絡電話</h4>
-                            <p class="text-secondary"><strong>06-2757575 ext.62301（承辦人：蕭小姐）</strong></p>
+                            <p class="text-secondary"><strong>06-2757575 ext.62301</strong></p>
                         </div>
                     </div>
 
@@ -1272,7 +1372,7 @@
         <div class="footer-content">
             <div class="footer-section">
                 <h3>🔥 鳳凰科技研習營</h3>
-                <p style="color: #cbd5e0; margin-top: 15px;">點燃科技夢想，展翅高飛</p>
+                <p class="footer-lead">點燃科技夢想，展翅高飛</p>
             </div>
             <div class="footer-section">
                 <h3>快速連結</h3>
@@ -1287,17 +1387,22 @@
             <div class="footer-section">
                 <h3>聯絡資訊</h3>
                 <ul>
-                    <li style="color: #cbd5e0;">📞 06-2757575 ext.62301（承辦人：蕭小姐）</li>
-                    <li style="color: #cbd5e0;">✉️ z11108176@ncku.edu.tw</li>
-                    <li style="color: #cbd5e0;">📍 國立成功大學電機系館</li>
+                    <li class="footer-contact-item">👤 承辦人：蕭小姐</li>
+                    <li class="footer-contact-item">📞 06-2757575 ext.62301</li>
+                    <li class="footer-contact-item">✉️ z11108176@ncku.edu.tw</li>
+                    <li class="footer-contact-item">📍 國立成功大學電機系館</li>
                 </ul>
             </div>
         </div>
         <div class="footer-bottom">
             <div class="footer-note">
-                主辦單位：國立成功大學電機工程學系　|　協辦單位：財團法人成電文教基金會　|　活動時間：1/28(Wed.) - 1/29(Thu.)
+                <span class="footer-note-item">主辦單位：國立成功大學電機工程學系</span>
+                <span class="footer-note-sep">|</span>
+                <span class="footer-note-item">協辦單位：財團法人成電文教基金會</span>
+                <span class="footer-note-sep">|</span>
+                <span class="footer-note-item">活動時間：1/28(Wed.) - 1/29(Thu.)</span>
             </div>
-            <p>&copy; 2026 鳳凰科技研習營 Phoenix Tech Camp. All Rights Reserved.</p>
+            <p>&copy; 2026 鳳凰科技研習營 All Rights Reserved.</p>
         </div>
     </footer>
 
