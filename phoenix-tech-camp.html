@@ -629,6 +629,7 @@
             display: block;
         }
 
+
         .form-heading {
             text-align: center;
             margin-bottom: 20px;
@@ -1047,10 +1048,6 @@
                 <div class="about-image about-slider" data-directory="pic/A" data-interval="3000">
                     <div class="image-caption">Day1：系所簡報、科技講座與實作課程亮點</div>
                     <div class="fallback-text">請在 pic/A 目錄放入圖片，即可顯示輪播內容</div>
-                    <div class="slider-controls" aria-hidden="false">
-                        <button type="button" class="slider-btn slider-prev" aria-label="上一張">上一張</button>
-                        <button type="button" class="slider-btn slider-next" aria-label="下一張">下一張</button>
-                    </div>
                 </div>
             </div>
 
@@ -1067,10 +1064,7 @@
                 <div class="about-image about-slider" data-directory="pic/B" data-interval="3000">
                     <div class="image-caption">Day2：招生講座、實驗室導覽與教師座談</div>
                     <div class="fallback-text">請在 pic/B 目錄放入圖片，即可顯示輪播內容</div>
-                    <div class="slider-controls" aria-hidden="false">
-                        <button type="button" class="slider-btn slider-prev" aria-label="上一張">上一張</button>
-                        <button type="button" class="slider-btn slider-next" aria-label="下一張">下一張</button>
-                    </div>
+
                 </div>
             </div>
             <!--
@@ -1272,7 +1266,7 @@
     </section>
 
     <!-- 頁尾 -->
-    <script id="folderImagesData" type="application/json">{"pic/A":["1079105.jpg","20250203_105812.JPG","3L3A5144.JPG","3L3A5145.JPG","3L3A5146.JPG","3L3A5151.JPG","3L3A5152.JPG","3L3A5154.JPG","3L3A5156.JPG","3L3A5161.JPG","3L3A5163.JPG","3L3A5165.JPG","3L3A5167.JPG","3L3A5170.JPG","3L3A5171.JPG","3L3A5173.JPG","3L3A5174.JPG","3L3A5175.JPG","3L3A5176.JPG","3L3A5177.JPG","3L3A5178.JPG","3L3A5182.JPG"],"pic/B":["20250203_111005.JPG","20250203_113102.JPG","20250203_113603.JPG","20250203_115127.JPG","20250203_115219.JPG","20250203_121637.JPG","20250203_121647.JPG","IMG_1807.HEIC","IMG_1813.HEIC","IMG_1816.JPG","IMG_1827.HEIC","IMG_1828.JPG","IMG_1829.HEIC","IMG_1830.HEIC","IMG_1831.HEIC","IMG_1832.HEIC","IMG_1833.HEIC","IMG_1834.HEIC","IMG_5875.HEIC","IMG_5877.HEIC","IMG_5879.HEIC","IMG_5880.HEIC","IMG_5881.HEIC","IMG_5885.HEIC","IMG_5886.HEIC","IMG_5887.HEIC","IMG_5888.HEIC","IMG_5889.HEIC","IMG_5894.HEIC","IMG_5896.HEIC","IMG_5899.HEIC","IMG_5900.HEIC","IMG_5902.HEIC","IMG_5908.HEIC"]}</script>
+    <script id="folderImagesData" type="application/json">{"pic/A":["1079105.jpg","3L3A5144.JPG","3L3A5145.JPG","3L3A5153.JPG","3L3A5167.JPG"],"pic/B":["20250203_105812.JPG","IMG_1813.jpg","IMG_1816.JPG","IMG_5877.jpg","IMG_5879.jpg","IMG_5880.jpg","IMG_5881.jpg","IMG_5886.jpg","IMG_5894.jpg","IMG_5902.jpg"]}</script>
 
     <footer>
         <div class="footer-content">
@@ -1402,6 +1396,7 @@
             });
         }
 
+        const SUPPORTED_IMG_REGEX = /\.(png|jpe?g|gif|webp)$/i;
         const folderImagesDataEl = document.getElementById('folderImagesData');
         let folderImagesCache = {};
         if (folderImagesDataEl) {
@@ -1424,13 +1419,19 @@
             const normalizedDir = dir.replace(/\/$/, '');
             const localList = folderImagesCache[normalizedDir];
             if (Array.isArray(localList) && localList.length) {
-                const images = localList.map(file => `${normalizedDir}/${file}`);
-                startFolderSlider(slider, images, interval);
-                return;
+                const images = localList
+                    .filter(file => SUPPORTED_IMG_REGEX.test(file))
+                    .map(file => `${normalizedDir}/${file}`);
+                if (images.length) {
+                    startFolderSlider(slider, images, interval);
+                    return;
+                }
             }
             fetch(`${normalizedDir}/images.json?cache=${Date.now()}`)
                 .then(res => res.ok ? res.json() : [])
-                .then(files => files.filter(file => /\.(png|jpe?g|gif|webp|heic)$/i.test(file)).map(file => `${normalizedDir}/${file}`))
+                .then(files => files
+                    .filter(file => SUPPORTED_IMG_REGEX.test(file))
+                    .map(file => `${normalizedDir}/${file}`))
                 .then(images => {
                     if (!images.length) {
                         slider.classList.add('slider-empty');
